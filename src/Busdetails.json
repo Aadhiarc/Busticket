@@ -1,0 +1,127 @@
+[
+  {
+    "from": "hosur",
+    "to": "chennai",
+    "bookingDate": [
+      {
+        "date": "9/24/2022",
+        "status": "1",
+        "available_seats": "5",
+        "bus_type": "ÄC/sleeper",
+        "starting_time": "23:00",
+        "reaching_time": "4:30",
+        "price": "800"
+      },
+      {
+        "date": "9/25/2022",
+        "status": "0",
+        "available_seats": "0",
+        "bus_type": "ÄC/sleeper",
+        "starting_time": "22:45",
+        "reaching_time": "4:30",
+        "price": "750"
+      },
+      {
+        "date": "9/26/2022",
+        "status": "1",
+        "available_seats": "3",
+        "bus_type": "ÄC/non-sleeper",
+        "starting_time": "06:15",
+        "reaching_time": "10:15",
+        "price": "700"
+      },
+      {
+        "date": "9/27/2022",
+        "status": "1",
+        "available_seats": "4",
+        "bus_type": "ÄC/non-sleeper",
+        "starting_time": "06:15",
+        "reaching_time": "10:15",
+        "price": "700"
+      }
+    ]
+  },{
+  "from": "chennai",
+  "to": "coimbatore",
+  "bookingDate": [
+    {
+      "date": "9/24/2022",
+      "status": "1",
+      "available_seats": "6",
+      "bus_type": "ÄC/sleeper",
+      "starting_time": "21:30",
+      "reaching_time": "6:40",
+      "price": "1000"
+    },
+    {
+      "date": "9/25/2022",
+      "status": "1",
+      "available_seats": "3",
+      "bus_type": "ÄC/sleeper",
+      "starting_time": "21:50",
+      "reaching_time": "7:50",
+      "price": "1100"
+    },
+    {
+      "date": "9/26/2022",
+      "status": "0",
+      "available_seats": "0",
+      "bus_type": "ÄC/sleeper",
+      "starting_time": "21:15",
+      "reaching_time": "6:15",
+      "price": "900"
+    },
+    {
+      "date": "9/27/2022",
+      "status": "1",
+      "available_seats": "4",
+      "bus_type": "ÄC/sleeper",
+      "starting_time": "20:15",
+      "reaching_time": "6:00",
+      "price": "700"
+    }
+  ]
+    },{
+  "from": "coimbatore",
+  "to": "erode",
+  "bookingDate": [
+    {
+      "date": "9/24/2022",
+      "status": "1",
+      "available_seats": "7",
+      "bus_type": "ÄC/sleeper",
+      "starting_time": "21:55",
+      "reaching_time": "23:55",
+      "price": "850"
+    },
+    {
+      "date": "9/25/2022",
+      "status": "0",
+      "available_seats": "0",
+      "bus_type": "ÄC/sleeper",
+      "starting_time": "22:45",
+      "reaching_time": "23:30",
+      "price": "900"
+    },
+    {
+      "date": "9/26/2022",
+      "status": "1",
+      "available_seats": "3",
+      "bus_type": "ÄC/non-sleeper",
+      "starting_time": "06:15",
+      "reaching_time": "10:15",
+      "price": "800"
+    },
+    {
+      "date": "9/27/2022",
+      "status": "1",
+      "available_seats": "4",
+      "bus_type": "ÄC/non-sleeper",
+      "starting_time": "23:45",
+      "reaching_time": "1:45",
+      "price": "800"
+    }
+  ],
+
+}
+]
