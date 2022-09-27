@@ -48,7 +48,16 @@ public class Main {
                                 System.out.println("Ticket price"+" "+">>>>>>"+bookingdates.get(0).price+" "+"inr");
                                 System.out.println("How many tickets do you want to book");
                                 Scanner t = new Scanner(System.in);
-                                
+                                int aseat;
+                                do {
+                                    aseat = t.nextInt();
+                                    if (aseat <= Integer.parseInt(bookingdates.get(0).available_seats)) {
+                                        System.out.println("you have booked the ticket successfully !!!");
+                                    } else {
+                                        System.out.println("we have only " + " " + bookingdates.get(0).available_seats + " " + "available seats");
+                                    }
+                                }while(aseat>Integer.parseInt(bookingdates.get(0).available_seats));
+
 
                         }
                 }
