@@ -14,10 +14,9 @@ import java.util.regex.Pattern;
 public class Main {
      static JSONArray ar;
     static ArrayList<Bus> bookingDetails = new ArrayList<Bus>();
-    static ArrayList<Bookingdates> bookingDates = new ArrayList<Bookingdates>();
-
+    static ArrayList<bookingDates> bookingDates = new ArrayList<bookingDates>();
+//-----Execution---Logic-------
     public static void main(String[] args) throws IOException, ParseException {
-
         ArrayList<Booking> bookings = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         Main m = new Main();
@@ -42,6 +41,7 @@ public class Main {
                       }
                       System.out.println("Select the date of the departure");
                       int dDate = s.nextInt()-1;
+                      //accessing data from json file through pojo class
                       System.out.println("The available bus on that date is one");
                       System.out.println("The available seats are" + " " + ">>>>>>" + ((JSONObject)((JSONArray)((JSONObject)ar.get(dDate)).get("bookingDate")).get(dDate)).get("available_seats"));
                       System.out.println("The bus type is" + " " + ">>>>>>" + ((JSONObject)((JSONArray)((JSONObject)ar.get(dDate)).get("bookingDate")).get(dDate)).get("bus_type"));
@@ -64,18 +64,15 @@ public class Main {
                       System.out.println("The bus type is" + " " + ">>>>>>" + ((JSONObject)((JSONArray)((JSONObject)ar.get(dDate)).get("bookingDate")).get(dDate)).get("bus_type"));
                       System.out.println("Bus Departure time is" + " " + ">>>>>>" +((JSONObject)((JSONArray)((JSONObject)ar.get(dDate)).get("bookingDate")).get(dDate)).get("starting_time"));
                       System.out.println("Bus Reaching the destination at" + " " + ">>>>>>" + ((JSONObject)((JSONArray)((JSONObject)ar.get(dDate)).get("bookingDate")).get(dDate)).get("reaching_time"));
-                      System.out.println("Total Ticket price" + " " + ">>>>>>" +((JSONObject)((JSONArray)((JSONObject)ar.get(dDate)).get("bookingDate")).get(dDate)).get("price"));
+                      System.out.println("Total Ticket price" + " " + ">>>>>>" +(Integer.parseInt((String) ((JSONObject) ((JSONArray) ((JSONObject) ar.get(dDate)).get("bookingDate")).get(dDate)).get("price")))*seat);
                       System.out.println("Do you want book ticket for the next day");
                       System.out.println("Thank you for using our application to book ticket");
                       System.exit(0);
-
                   }
-
-
                 }
             }
         }
-
+//import json file
     void jsonDetails() throws IOException, ParseException {
         Object obj = new JSONParser().parse(new FileReader("C:\\Users\\SwiftAnt\\IdeaProjects\\busTicket\\src\\busDetails.json"));
         ar = (JSONArray) obj;
@@ -89,7 +86,7 @@ public class Main {
         String startingTime;
         String reachingTime;
         String price;
-
+        //add json file as string to POJO class
         for (Object details : ar) {
             from = (String) (((JSONObject) details).get("from"));
             to = (String) (((JSONObject) details).get("to"));
@@ -103,12 +100,12 @@ public class Main {
                 startingTime = (String) ((JSONObject) arrayDetails).get("starting_time");
                 reachingTime = (String) ((JSONObject) arrayDetails).get("reaching_time");
                 price = (String) ((JSONObject) arrayDetails).get("price");
-                bookingDates.add(new Bookingdates(date, status, bookingDate, availableSeats, busType, startingTime, reachingTime, price));
+                bookingDates.add(new bookingDates(date, status, bookingDate, availableSeats, busType, startingTime, reachingTime, price));
             }
         }
 
     }
-
+//user verification
     void validation() {
         Scanner s = new Scanner(System.in);
         //Username Validation
@@ -173,7 +170,7 @@ public class Main {
         }while(boo3==false);
     }
 
-    }
+}
 
 
 

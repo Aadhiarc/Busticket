@@ -1,6 +1,6 @@
 import org.json.simple.JSONArray;
 
-public class Bookingdates {
+public class bookingDates {
 
     String date;
     String status;
@@ -8,7 +8,7 @@ public class Bookingdates {
     JSONArray bookingDate;
     String bus_type;
     String starting_time;
-    Bookingdates(String date, String status, JSONArray bookingDate, String availableSeats, String busType, String staringTime, String reachingTime, String price){
+    bookingDates(String date, String status, JSONArray bookingDate, String availableSeats, String busType, String staringTime, String reachingTime, String price){
         this.date=date;
         this.status=status;
         this.bookingDate = bookingDate;
