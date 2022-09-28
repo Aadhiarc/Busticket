@@ -12,14 +12,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Main {
+     static JSONArray ar;
     static ArrayList<Bus> bookingDetails = new ArrayList<Bus>();
-    static ArrayList<Bookingdates> bookingdates = new ArrayList<Bookingdates>();
+    static ArrayList<Bookingdates> bookingDates = new ArrayList<Bookingdates>();
 
     public static void main(String[] args) throws IOException, ParseException {
+
         ArrayList<Booking> bookings = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         Main m = new Main();
         m.jsonDetails();
+        //System.out.println(((JSONObject)((JSONArray)((JSONObject)ar.get(0)).get("bookingDate")).get(0)).get("date"));
         Scanner s = new Scanner(System.in);
         System.out.println("welcome to book buses !!!!!!");
         m.validation();
@@ -30,54 +33,54 @@ public class Main {
             if (userOpt == 1) {
                 System.out.println("The available buses are");
                 System.out.println("1.hosur to chennai\n2.chennai to coimbatore\n3.coimbatore to erode");
-                System.out.println("Select the options to check the available dates");
-                int opt = s.nextInt();
-                switch (opt) {
-                    case 1:
-                        for (int k = 1; k <= bookingdates.size() / 3; k++) {
-                            System.out.println("available dates" + ">>>>>>>" + " " + k + "." + bookingdates.get(k).date);
+                int location = s.nextInt()-1;
+                        System.out.println(bookingDetails.get(location).from);
+                        System.out.println(bookingDetails.get(location).to);
+                System.out.println("The available dates of the bus");
+                        for (int k = 1; k <= bookingDates.size() / 3; k++) {
+                            System.out.println("available dates" + ">>>>>>>" + " " + k + "." + bookingDates.get(k).date);
                         }
-                        System.out.println("Select the date of depature date");
-                        int dDate = s.nextInt();
-                        switch (dDate) {
-                            case 1:
-                                System.out.println("The available seats are" + " " +">>>>>>"+ bookingdates.get(0).available_seats);
-                                System.out.println("The bus type is"+" "+">>>>>>"+bookingdates.get(0).bus_type);
-                                System.out.println("Bus Departure time is"+" "+">>>>>>"+bookingdates.get(0).starting_time);
-                                System.out.println("Bus Reaching the destination at"+" "+">>>>>>"+bookingdates.get(0).reaching_time);
-                                System.out.println("Ticket price"+" "+">>>>>>"+bookingdates.get(0).price+" "+"inr");
-                                System.out.println("How many tickets do you want to book");
-                                Scanner t = new Scanner(System.in);
-                                int aseat;
-                                do {
-                                    aseat = t.nextInt();
-                                    if (aseat <= Integer.parseInt(bookingdates.get(0).available_seats)) {
-                                        System.out.println("you have booked the ticket successfully !!!");
-                                    } else {
-                                        System.out.println("we have only " + " " + bookingdates.get(0).available_seats + " " + "available seats");
-                                    }
-                                }while(aseat>Integer.parseInt(bookingdates.get(0).available_seats));
+                        System.out.println("Select the date of the departure");
+                        int dDate = s.nextInt()-1;
+                                    System.out.println("The available bus on that date is one");
+                                    System.out.println("The available seats are" + " " + ">>>>>>" + bookingDates.get(dDate).available_seats);
+                                    System.out.println("The bus type is" + " " + ">>>>>>" + bookingDates.get(dDate).bus_type);
+                                    System.out.println("Bus Departure time is" + " " + ">>>>>>" + bookingDates.get(dDate).starting_time);
+                                    System.out.println("Bus Reaching the destination at" + " " + ">>>>>>" + bookingDates.get(dDate).reaching_time);
+                                    System.out.println("Ticket price" + " " + ">>>>>>" + bookingDates.get(dDate).price + " " + "inr");
+                                    System.out.println("How many tickets do you want to book");
+                                    Scanner t = new Scanner(System.in);
+                                    int seat;
+                                    boolean b = false;
+                                    do {
+                                        seat = t.nextInt();
+                                        if (seat <= Integer.parseInt(bookingDates.get(dDate).available_seats)) {
+                                            System.out.println("your ticket have been booked  successfully !!!");
+                                        } else {
+                                            System.out.println("we have only " + " " + bookingDates.get(dDate).available_seats + " " + "available seats");
+                                        }
+                                    } while (seat > Integer.parseInt(bookingDates.get(dDate).available_seats));
+                                    System.out.println("from"+" "+bookingDetails.get(dDate).from+"----->"+" "+"to"+" "+bookingDetails.get(dDate).to);
+                                    System.out.println("Do you want book ticket for the next day");
+                                    System.out.println("Thank you for using our application to book ticket");
+                                    System.exit(0);
 
-
-                        }
                 }
             }
         }
 
-    }
-
     void jsonDetails() throws IOException, ParseException {
         Object obj = new JSONParser().parse(new FileReader("C:\\Users\\SwiftAnt\\IdeaProjects\\Busticket\\src\\Busdetails.json"));
-        JSONArray ar = (JSONArray) obj;
+        ar = (JSONArray) obj;
         String date = null;
         JSONArray bookingDate = null;
         String from = null;
         String to = null;
         String status;
-        String availableseats;
-        String bustype;
-        String startingtime;
-        String reachingtime;
+        String availableSeats;
+        String busType;
+        String startingTime;
+        String reachingTime;
         String price;
 
         for (Object details : ar) {
@@ -85,15 +88,15 @@ public class Main {
             to = (String) (((JSONObject) details).get("to"));
             bookingDate = ((JSONArray) ((JSONObject) details).get("bookingDate"));
             bookingDetails.add(new Bus(from, to, bookingDate));
-            for (Object detailsarray : bookingDate) {
-                date = (String) ((JSONObject) detailsarray).get("date");
-                status = (String) ((JSONObject) detailsarray).get("status");
-                availableseats = (String) ((JSONObject) detailsarray).get("available_seats");
-                bustype = (String) ((JSONObject) detailsarray).get("bus_type");
-                startingtime = (String) ((JSONObject) detailsarray).get("starting_time");
-                reachingtime = (String) ((JSONObject) detailsarray).get("reaching_time");
-                price = (String) ((JSONObject) detailsarray).get("price");
-                bookingdates.add(new Bookingdates(date, status, bookingDate, availableseats, bustype, startingtime, reachingtime, price));
+            for (Object arrayDetails : bookingDate) {
+                date = (String) ((JSONObject) arrayDetails).get("date");
+                status = (String) ((JSONObject) arrayDetails).get("status");
+                availableSeats = (String) ((JSONObject) arrayDetails).get("available_seats");
+                busType = (String) ((JSONObject) arrayDetails).get("bus_type");
+                startingTime = (String) ((JSONObject) arrayDetails).get("starting_time");
+                reachingTime = (String) ((JSONObject) arrayDetails).get("reaching_time");
+                price = (String) ((JSONObject) arrayDetails).get("price");
+                bookingDates.add(new Bookingdates(date, status, bookingDate, availableSeats, busType, startingTime, reachingTime, price));
             }
         }
 
@@ -148,7 +151,7 @@ public class Main {
         boolean boo3;
         String phone;
         do {
-            System.out.println("Enter your phonenumber");
+            System.out.println("Enter your phone Number");
             phone = s.nextLine();
             Pattern pattern3 = Pattern.compile("^([^0][0-9]*)$");
             Matcher matcher3 = pattern3.matcher(phone);

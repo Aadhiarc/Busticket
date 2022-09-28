@@ -14,8 +14,8 @@
       },
       {
         "date": "9/25/2022",
-        "status": "0",
-        "available_seats": "0",
+        "status": "1",
+        "available_seats": "1",
         "bus_type": "ÄC/sleeper",
         "starting_time": "22:45",
         "reaching_time": "4:30",
@@ -64,8 +64,8 @@
     },
     {
       "date": "9/26/2022",
-      "status": "0",
-      "available_seats": "0",
+      "status": "1",
+      "available_seats": "3",
       "bus_type": "ÄC/sleeper",
       "starting_time": "21:15",
       "reaching_time": "6:15",
@@ -96,8 +96,8 @@
     },
     {
       "date": "9/25/2022",
-      "status": "0",
-      "available_seats": "0",
+      "status": "1",
+      "available_seats": "4",
       "bus_type": "ÄC/sleeper",
       "starting_time": "22:45",
       "reaching_time": "23:30",

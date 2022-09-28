@@ -8,14 +8,14 @@ public class Bookingdates {
     JSONArray bookingDate;
     String bus_type;
     String starting_time;
-    Bookingdates(String date, String status, JSONArray bookingDate, String availableseats, String bustype, String startingtime, String reachingtime, String price){
+    Bookingdates(String date, String status, JSONArray bookingDate, String availableSeats, String busType, String staringTime, String reachingTime, String price){
         this.date=date;
         this.status=status;
         this.bookingDate = bookingDate;
-        this.available_seats=availableseats;
-        this.bus_type=bustype;
-        this.starting_time=startingtime;
-        this.reaching_time=reachingtime;
+        this.available_seats=availableSeats;
+        this.bus_type=busType;
+        this.starting_time=staringTime;
+        this.reaching_time=reachingTime;
         this.price=price;
     }
     public JSONArray getBookingDate() {
