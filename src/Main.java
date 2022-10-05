@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,6 +16,8 @@ public class Main {
       JSONArray ar;
     ArrayList<Bus> bookingDetails = new ArrayList<Bus>();
     ArrayList<bookingDates> bookingDates = new ArrayList<bookingDates>();
+    String username;
+    ArrayList userInputs = new ArrayList<>();
 //-----Execution---Logic-------
     public static void main(String[] args) throws IOException, ParseException {
         ArrayList<Booking> bookings = new ArrayList<>();
@@ -22,10 +25,9 @@ public class Main {
         Main m = new Main();
         m.jsonDetails();
         m.executeMethod();
-
         }
         //Execution Method
-    void executeMethod(){
+    void executeMethod() throws IOException {
         Scanner sc = new Scanner(System.in);
         Scanner s = new Scanner(System.in);
         System.out.println("welcome to book buses !!!!!!");
@@ -81,7 +83,7 @@ public class Main {
     }
 //import json file
     void jsonDetails() throws IOException, ParseException {
-        Object obj = new JSONParser().parse(new FileReader("C:\\Users\\SwiftAnt\\IdeaProjects\\busTicket\\src\\busDetails.json"));
+        Object obj = new JSONParser().parse(new FileReader("busDetails.json"));
         ar = (JSONArray) obj;
         String date = null;
         JSONArray bookingDate = null;
@@ -113,11 +115,11 @@ public class Main {
 
     }
 //user verification
-    void validation() {
+    void validation() throws IOException {
         Scanner s = new Scanner(System.in);
         //Username Validation
         System.out.println("Enter your username");
-        String username = s.nextLine();
+          String username = s.nextLine();
         Pattern pattern1 = Pattern.compile("  ^((?=.[a-z])(?=.[A-Z])^[a-z][\\w]{8,30})$");
         Matcher matcher1 = pattern1.matcher(username);
         boolean boo1 = matcher1.matches();
@@ -175,8 +177,19 @@ public class Main {
 
             }
         }while(boo3==false);
+        putMethod();
     }
 
+    // to  put user information
+    void putMethod() throws IOException {
+        JSONObject jsPut = new JSONObject();
+        jsPut.put("userName",username);
+        userInputs.add(jsPut);
+        FileWriter fileWriter = new FileWriter("C:\\Users\\Aadithyan Mani\\Documents\\Busticket\\userInputs.json");
+        fileWriter.write(String.valueOf(userInputs));
+        fileWriter.flush();
+        fileWriter.close();
+    }
     }
 
 
